@@ -149,7 +149,8 @@ class WorkflowStep( ctk.ctkWorkflowWidgetStep ) :
     widgets = self.getChildren(self.widget)
     for widget in widgets:
       workflow = widget.property('workflow')
-      if workflow != None:
+      ignoreWorkflow = widget.property('ignoreWorkflow')
+      if workflow != None and (ignoreWorkflow == None or ignoreWorkflow == False):
         widget.setVisible( str(level) in workflow )
     # Potentially enable/disable next button
     self.validate(None)
